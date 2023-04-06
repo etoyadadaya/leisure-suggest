@@ -5,9 +5,11 @@ from db import restaurants_collection, bars_collection, cafes_collection, favori
 from db import list_all
 
 
+# Инициализация приложения
 app = FastAPI()
 
 
+# Получить из коллекции определенный объект
 @app.get("/v1/{collection}/{item}")
 def get_place(collection: str, item: str):
     try:
@@ -27,6 +29,7 @@ def get_place(collection: str, item: str):
         raise HTTPException(status_code=500, detail=ex)
 
 
+# Добавить данные в коллекцию
 @app.post("/v1/{collection}")
 def add_place(collection: str, data: dict):
     try:
@@ -46,6 +49,7 @@ def add_place(collection: str, data: dict):
         raise HTTPException(status_code=500, detail=ex)
 
 
+# Обновить данные в коллекции по id
 @app.put("/v1/{collection}/{_id}")
 def update_place(collection: str, _id: int, data: dict):
     try:
@@ -65,6 +69,7 @@ def update_place(collection: str, _id: int, data: dict):
         raise HTTPException(status_code=500, detail=ex)
 
 
+# Удалить объект из коллекции по id
 @app.delete("/v1/{collection}/{_id}")
 def delete_place(collection: str, _id: int):
     try:
@@ -84,6 +89,7 @@ def delete_place(collection: str, _id: int):
         raise HTTPException(status_code=500, detail=ex)
 
 
+# Получить все объекты из коллекции
 @app.get("/v1/{collection}")
 def get_all(collection: str):
     try:
