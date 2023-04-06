@@ -4,6 +4,7 @@ from db import insert_document, find_document, update_document, delete_document
 from db import restaurants_collection, bars_collection, cafes_collection, favorites_collection
 from db import list_all
 
+
 app = FastAPI()
 
 
