@@ -1,4 +1,6 @@
 from pymongo import MongoClient
+from pydantic import BaseModel, Field
+
 
 client = MongoClient('localhost', 27017)
 db = client['Data']
@@ -26,3 +28,7 @@ def update_document(collection, query_elements, new_values):
 
 def delete_document(collection, query):
     collection.delete_one(query)
+
+
+def list_all(collection):
+    return list(collection.find({}))
