@@ -1,11 +1,13 @@
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
+from aiogram.types.web_app_info import WebAppInfo
 
 back_btn = KeyboardButton("В главное меню")
 
 # -----------------------Main menu---------------------------
 
 all_tasks_btn = KeyboardButton("Сходить покушать")
-main_menu = ReplyKeyboardMarkup(resize_keyboard=True).add(all_tasks_btn)
+web_app_btn = KeyboardButton("Открыть страницу", web_app=WebAppInfo(url="https://ya.ru"))
+main_menu = ReplyKeyboardMarkup(resize_keyboard=True).add(all_tasks_btn, web_app_btn)
 
 # -----------------------All tasks menu----------------------
 
